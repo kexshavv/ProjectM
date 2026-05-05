@@ -48,13 +48,9 @@ export async function POST(request) {
   } catch (error) {
     console.error('Registration error:', error);
     
-    // Check if it's a mongoose/mongodb connection error
-    if (error.name === 'MongooseError' || error.message.includes('ECONNREFUSED') || error.message.includes('failed to connect')) {
-      return NextResponse.json({ 
-        message: 'Database connection failed. Please ensure MongoDB is running or update MONGODB_URI in .env.local.' 
-      }, { status: 500 });
-    }
-
-    return NextResponse.json({ message: 'Server error during registration' }, { status: 500 });
+    // Return the exact error message to help debug Railway deployment
+    return NextResponse.json({ 
+      message: `Error: ${error.message}` 
+    }, { status: 500 });
   }
 }
