@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ProjectM - Project Management Web App
 
-## Getting Started
+ProjectM is a modern, responsive project management application featuring role-based access control (Admin/Member) and a Kanban-style task tracking board. Built with a stunning glassmorphic UI.
 
-First, run the development server:
+## Features
+- **Authentication**: Secure Signup and Login using NextAuth and bcryptjs.
+- **Role-Based Access Control**: Admins can manage projects and assign tasks. Members can update their assigned tasks.
+- **Projects**: Create projects and assign members.
+- **Kanban Board**: Drag-and-drop task tracking with "Todo", "In Progress", and "Done" statuses.
+- **Dashboard**: Quick overview of statistics and upcoming tasks.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tech Stack
+- **Frontend**: Next.js 15 (App Router), React, Vanilla CSS (Glassmorphism)
+- **Backend**: Next.js API Routes (REST APIs)
+- **Database**: MongoDB with Mongoose
+- **Authentication**: NextAuth.js (Credentials Provider)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local Development
+1. Clone the repository.
+2. Install dependencies: `npm install`
+3. Create a `.env.local` file with the following variables:
+   ```env
+   MONGODB_URI=your_mongodb_connection_string
+   NEXTAUTH_SECRET=your_secret_key
+   NEXTAUTH_URL=http://localhost:3000
+   ```
+4. Run the development server: `npm run dev`
+5. Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Deployment to Railway (Mandatory Instructions)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Push to GitHub**: Make sure this project is pushed to a public or private GitHub repository.
+2. **Create Railway Account**: Go to [Railway.app](https://railway.app/) and sign in with GitHub.
+3. **Add Database**: 
+   - Click "New Project" -> "Provision MongoDB".
+   - This creates a MongoDB instance for your app.
+4. **Deploy Application**:
+   - In your Railway project, click "New" -> "GitHub Repo" and select your repository.
+   - Railway will automatically detect the Next.js framework.
+5. **Set Environment Variables**:
+   - Go to your Next.js application service in Railway -> "Variables" tab.
+   - Add `NEXTAUTH_SECRET` (generate a random string).
+   - Add `NEXTAUTH_URL` (set this to the public domain Railway generates for your app).
+   - Add `MONGODB_URI`. You can use Railway's reference variables to automatically link the MongoDB plugin you created in step 3 (e.g., `${{MongoDB.MONGO_URL}}`).
+6. **Generate Domain**:
+   - In your Next.js service settings, click "Generate Domain" to get your live URL!
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Demo Video
+*(Please replace this section with your 2-5 min demo video link prior to submission)*
